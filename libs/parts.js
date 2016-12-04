@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const NpmInstallPlugin = require('npm-install-webpack-plugin');
+const PostCssAutoprefixerPlugin = require('autoprefixer');
 
 exports.indexTemplate = function(options) {
   return {
@@ -125,8 +126,11 @@ exports.setupCSS = function(paths) {
     module: {
       loaders: [
         {
-          test: /\.css$/,
-          loaders: ['style', 'css'],
+          test: /\.s?css$/,
+          loaders: [
+            'style',
+            'css?modules&importLoaders=1&localIdentName=[name]__[local]__[hash:base64:4]&sourceMap!postcss!sass'
+          ],
           include: paths
         }
       ]
@@ -193,8 +197,8 @@ exports.extractCSS = function(paths) {
       loaders: [
         // Extract CSS during build
         {
-          test: /\.css$/,
-          loader: ExtractTextPlugin.extract('style', 'css'),
+          test: /\.s?css$/,
+          loader: ExtractTextPlugin.extract('style', 'css?modules&importLoaders=1!postcss!sass'),
           include: paths
         }
       ]
@@ -204,6 +208,16 @@ exports.extractCSS = function(paths) {
       new ExtractTextPlugin('[name].[chunkhash].css')
     ]
   };
+}
+
+exports.autoprefixCSS = function() {
+  return {
+    postcss: [
+      PostCssAutoprefixerPlugin({
+        browsers: ['last 2 versions']
+      })
+    ]
+  }
 }
 
 exports.npmInstall = function(options) {

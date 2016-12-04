@@ -1,4 +1,6 @@
 import React from 'react';
+
+import Button from './Button/Button';
 import Note from './Note';
 import Editable from './Editable';
 
@@ -16,9 +18,9 @@ export default ({
             editing={editing}
             value={task}
             onEdit={onEdit.bind(null, id)} />
-          <button onClick={onDelete.bind(null, id)}>x</button>
+          <Button text="x" styleName="sm" onClick={onDelete.bind(null, id)} />
         </Note>
       </li>
     )}
   </ul>
-)
+);

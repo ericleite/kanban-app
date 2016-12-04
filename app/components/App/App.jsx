@@ -1,30 +1,31 @@
 import React from 'react';
-import Notes from './Notes';
 import uuid from 'uuid';
 
-export default class App extends React.Component {
-  constructor(props) {
-    super(props);
+import Notes from '../Notes';
+import Button from '../Button/Button';
 
-    this.state = {
-      notes: [
-        {
-          id: uuid.v4(),
-          task: 'Build a kanban app'
-        },
-        {
-          id: uuid.v4(),
-          task: 'Do laundry'
-        }
-      ]
-    };
+import style from './App.scss';
+
+export default class App extends React.Component {
+  state = {
+    notes: [
+      {
+        id: uuid.v4(),
+        task: 'Build a kanban app'
+      },
+      {
+        id: uuid.v4(),
+        task: 'Do laundry'
+      }
+    ]
   }
+
   render() {
     const {notes} = this.state;
 
     return (
-      <div>
-        <button onClick={this.addNote}>+</button>
+      <div className="App">
+        <Button text="+" styleName="sm" onClick={this.addNote} />
         <Notes
           notes={notes}
           onNoteClick={this.activateNodeEdit}
@@ -33,6 +34,7 @@ export default class App extends React.Component {
       </div>
     );
   }
+
   addNote = () => {
     this.setState({
       notes: this.state.notes.concat([
@@ -43,12 +45,14 @@ export default class App extends React.Component {
       ])
     });
   }
+
   deleteNote = (id, e) => {
     e.stopPropagation();
     this.setState({
       notes: this.state.notes.filter((note) => note.id !== id)
     });
   }
+
   activateNodeEdit = (id) => {
     this.setState({
       notes: this.state.notes.map((note) => {
@@ -60,6 +64,7 @@ export default class App extends React.Component {
       })
     })
   }
+
   editNote = (id, task) => {
     this.setState({
       notes: this.state.notes.map((note) => {

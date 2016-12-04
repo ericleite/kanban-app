@@ -1,0 +1,61 @@
+.default {
+  display: inline-block;
+  vertical-align: top;
+  padding: 1em 1.5em;
+  color: #47BECF;
+  background-color: transparent;
+  border-color: #47BECF;
+  border-style: solid;
+  border-width: 0.0625em;
+  border-radius: 0.25em;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  transition: all 200ms ease;
+}
+
+/* States
+   ------*/
+.default:hover {
+  color: #fff;
+  background-color: #47BECF;
+  border-color: #47BECF;
+  border-style: solid;
+  border-width: 0.0625em;
+  text-decoration: none;
+}
+
+.default:focus, .default:active {
+  color: #fff;
+  background-color: #47BECF;
+  border-color: #47BECF;
+  border-style: solid;
+  border-width: 0.0625em;
+  text-decoration: none;
+  box-shadow: inset 0 0 0.6em rgba(0,0,0,0.1);
+  outline: none;
+}
+
+/* Layout
+   ------*/
+.default + .default {
+  margin-left: 1em;
+}
+
+/* Sizes
+   -----*/
+.sm {
+  composes: default;
+  padding: 0.5em 1em;
+  font-size: 0.667em;
+}
+
+.md {
+  composes: default;
+  font-size: 1em;
+}
+
+.lg {
+  composes: default;
+  font-size: 1.25em;
+}

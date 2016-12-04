@@ -1,6 +1,7 @@
 const path = require('path');
 const merge = require('webpack-merge');
 const validate = require('webpack-validator');
+const PostCssLocalByDefaultPlugin = require('postcss-modules-local-by-default');
 
 const parts = require('./libs/parts');
 
@@ -8,9 +9,7 @@ const TARGET = process.env.npm_lifecycle_event;
 const ENABLE_POLLING = process.env.ENABLE_POLLING;
 const PATHS = {
   app: path.join(__dirname, 'app'),
-  style: [
-    path.join(__dirname, 'app', 'main.css')
-  ],
+  style: path.join(__dirname, 'app'),
   build: path.join(__dirname, 'build'),
   test: path.join(__dirname, 'tests')
 };
@@ -36,11 +35,14 @@ const common = merge(
     },
     resolve: {
       extensions: ['', '.js', '.jsx']
-    }
+    },
+    postcss: [
+      PostCssLocalByDefaultPlugin()
+    ]
   },
   parts.indexTemplate({
     title: 'Kanban demo',
-    appMountId: 'app'
+    appMountId: 'index'
   }),
   parts.loadJSX(PATHS.app),
   parts.lintJSX(PATHS.app)
@@ -75,6 +77,7 @@ switch(TARGET) {
         entries: ['react', 'react-dom']
       }),
       parts.minify(),
+      parts.autoprefixCSS(),
       parts.extractCSS(PATHS.style)
     );
     break;
