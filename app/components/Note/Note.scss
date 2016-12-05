@@ -1,0 +1,14 @@
+@import "../../styles/variables";
+
+.default {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.default + .default {
+  margin-top: $ms1;
+  padding-top: $ms1;
+  border-top: 1px solid $white-smoke;
+}

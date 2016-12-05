@@ -5,14 +5,16 @@
 :global html {
   width: 100%;
   height: 100%;
+  font-size: 16px;
 }
 
 :global body {
-  font-family: sans-serif;
-  font-size: 16px;
   margin: 0;
-  background-color: $navy-blue;
-  color: #fff;
+  background-color: $white-smoke;
+  color: $light-charcoal;
+  font-family: $san-serif;
+  font-size: $ms1;
+  font-weight: 300;
   line-height: 1.5;
   width: 100%;
   height: 100%;
@@ -20,38 +22,33 @@
 
 :global(h1, h2, h3, h4, h5, h6) {
   margin-top: 0;
-  margin-bottom: 1em;
+  margin-bottom: $ms1;
   font-family: serif;
   line-height: 1;
 }
 
 :global(h1, .h1) {
-  font-size: 7.594em;
+  font-size: $ms6;
 }
 
 :global(h2, .h2) {
-  font-size: 5.063em;
+  font-size: $ms5;
 }
 
 :global(h3, .h3) {
-  font-size: 3.375em;
+  font-size: $ms4;
 }
 
 :global(h4, .h4) {
-  font-size: 2.25em;
+  font-size: $ms3;
 }
 
 :global(h5, .h5) {
-  font-size: 1.5em;
+  font-size: $ms2;
 }
 
 :global(h6, .h6) {
-  font-size: 1em;
-}
-
-:global img {
-  max-width: 100%;
-  height: auto;
+  font-size: $ms1;
 }
 
 :global a {
@@ -60,6 +57,22 @@
 }
 
 :global a:hover {
-  color: #FE787C;
+  color: $coral;
   text-decoration: none;
+}
+
+:global img {
+  max-width: 100%;
+  height: auto;
+}
+
+:global ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+:global ul li {
+  margin: 0;
+  padding: 0;
 }

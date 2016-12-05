@@ -1,10 +1,10 @@
-import React from 'react';
-import uuid from 'uuid';
+import React from 'react'
+import uuid from 'uuid'
 
-import Notes from '../Notes';
-import Button from '../Button/Button';
+import Notes from '../Notes/Notes'
+import Button from '../Button/Button'
 
-import style from './App.scss';
+import style from './App.scss'
 
 export default class App extends React.Component {
   state = {
@@ -21,18 +21,23 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {notes} = this.state;
+    const {notes} = this.state
 
     return (
-      <div className="App">
-        <Button text="+" styleName="sm" onClick={this.addNote} />
+      <div className='App'>
+        <Button
+          text='+'
+          styleName='sm'
+          onClick={this.addNote}
+        />
         <Notes
           notes={notes}
           onNoteClick={this.activateNodeEdit}
           onEdit={this.editNote}
-          onDelete={this.deleteNote} />
+          onDelete={this.handleDeleteNote}
+        />
       </div>
-    );
+    )
   }
 
   addNote = () => {
@@ -43,25 +48,24 @@ export default class App extends React.Component {
           task: 'Another task'
         }
       ])
-    });
-  }
-
-  deleteNote = (id, e) => {
-    e.stopPropagation();
-    this.setState({
-      notes: this.state.notes.filter((note) => note.id !== id)
-    });
+    })
   }
 
   activateNodeEdit = (id) => {
     this.setState({
       notes: this.state.notes.map((note) => {
         if (note.id === id) {
-          note.editing = true;
+          note.editing = true
         }
 
-        return note;
+        return note
       })
+    })
+  }
+
+  deleteNote(id) {
+    this.setState({
+      notes: this.state.notes.filter((note) => note.id !== id)
     })
   }
 
@@ -69,12 +73,23 @@ export default class App extends React.Component {
     this.setState({
       notes: this.state.notes.map((note) => {
         if (note.id === id) {
-          note.editing = false;
-          note.task = task;
+          note.editing = false
+          note.task = task
         }
 
-        return note;
+        return note
       })
     })
+
+    if (task.length === 0) {
+      this.deleteNote(id)
+      return
+    }
+  }
+
+  handleDeleteNote = (id, e) => {
+    e.stopPropagation()
+
+    this.deleteNote(id)
   }
 }

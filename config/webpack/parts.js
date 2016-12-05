@@ -12,7 +12,9 @@ exports.indexTemplate = function(options) {
         template: require('html-webpack-template'),
         title: options.title,
         appMountId: options.appMountId,
-        inject: false
+        inject: false,
+        meta: require('../html/meta').meta,
+        links: require('../html/links').links
       })
     ]
   };
@@ -214,7 +216,10 @@ exports.autoprefixCSS = function() {
   return {
     postcss: [
       PostCssAutoprefixerPlugin({
-        browsers: ['last 2 versions']
+        browsers: [
+          'last 2 versions',
+          'ie 9-11'
+        ]
       })
     ]
   }

@@ -1,0 +1,23 @@
+@import "../../styles/variables";
+
+.default {
+  width: 100%;
+  padding: 0.25em 0;
+  background-color: transparent;
+  border: 1px solid $white-smoke;
+  color: $light-charcoal;
+  font-family: $san-serif;
+  font-size: $ms1;
+  transition: $transition-all-fast;
+
+  &:focus {
+    color: $light-charcoal;
+    outline: none;
+  }
+}
+
+.seamless {
+  composes: default;
+  border: none;
+  padding: 0;
+}
