@@ -17,7 +17,7 @@ export default ({
 
   return (
     <div className={styles[styleName]}>
-      {!noResults ? notes.map(({id, editing, task}) =>
+      {!noResults ? notes.map(({ id, editing, task }) =>
         <Note
           key={id}
           onClick={onNoteClick.bind(null, id)}
@@ -28,8 +28,8 @@ export default ({
             onEdit={onEdit.bind(null, id)}
           />
           <Button
-            text='x'
-            styleName='sm'
+            text="x"
+            styleName="sm"
             onClick={onDelete.bind(null, id)}
           />
         </Note>

@@ -21,13 +21,13 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {notes} = this.state
+    const { notes } = this.state
 
     return (
-      <div className='App'>
+      <div className="App">
         <Button
-          text='+'
-          styleName='sm'
+          text="+"
+          styleName="sm"
           onClick={this.addNote}
         />
         <Notes

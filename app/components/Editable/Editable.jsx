@@ -32,8 +32,8 @@ class Edit extends React.Component {
 
     return (
       <Input
-        styleName='seamless'
-        type='text'
+        styleName="seamless"
+        type="text"
         autoFocus={true}
         defaultValue={value}
         onBlur={this.finishEdit}
