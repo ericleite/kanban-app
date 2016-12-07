@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import Input from '../Input/Input'
 
 import styles from './Editable.scss'
 
-export default ({
+const Editable = ({
   editing,
   value,
   styleName='default',
@@ -26,16 +26,33 @@ export default ({
   return <span className={styles[styleName]} {...props}>{value}</span>
 }
 
-class Edit extends React.Component {
-  render() {
-    const { value, ...props } = this.props
 
+Editable.displayName = 'Editable'
+
+Editable.propTypes = {
+  editing: PropTypes.bool,
+  value: PropTypes.string,
+  styleName: PropTypes.string,
+  onEdit: PropTypes.func
+}
+
+export default Editable
+
+class Edit extends React.Component {
+  static displayName = 'Edit'
+
+  static propTypes = {
+    value: PropTypes.string,
+    onEdit: PropTypes.func
+  }
+
+  render() {
     return (
       <Input
         styleName="seamless"
         type="text"
         autoFocus={true}
-        defaultValue={value}
+        defaultValue={this.props.value}
         onBlur={this.finishEdit}
         onKeyPress={this.checkEnter}
       />

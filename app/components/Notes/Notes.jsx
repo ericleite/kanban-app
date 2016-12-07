@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import Button from '../Button/Button'
 import Note from '../Note/Note'
@@ -6,7 +6,7 @@ import Editable from '../Editable/Editable'
 
 import styles from './Notes.scss'
 
-export default ({
+const Notes = ({
   notes,
   styleName='default',
   onNoteClick = () => {},
@@ -37,3 +37,15 @@ export default ({
     </div>
   )
 }
+
+Notes.displayName = 'Notes'
+
+Notes.propTypes = {
+  notes: PropTypes.array,
+  styleName: PropTypes.string,
+  onNoteClick: PropTypes.func,
+  onEdit: PropTypes.func,
+  onDelete: PropTypes.func
+}
+
+export default Notes

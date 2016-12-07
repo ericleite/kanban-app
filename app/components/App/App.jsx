@@ -4,7 +4,9 @@ import uuid from 'uuid'
 import Notes from '../Notes/Notes'
 import Button from '../Button/Button'
 
+/* eslint-disable */
 import style from './App.scss'
+/* eslint-enable */
 
 export default class App extends React.Component {
   state = {

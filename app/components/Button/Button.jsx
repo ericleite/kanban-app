@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import styles from './Button.scss'
 
-export default ({ styleName='default', text, ...props }) => {
+const Button = ({
+  styleName='default',
+  text,
+  ...props
+}) => {
   return (
     <button
       className={styles[styleName]}
@@ -12,3 +16,12 @@ export default ({ styleName='default', text, ...props }) => {
     </button>
   )
 }
+
+Button.displayName = 'Button'
+
+Button.propTypes = {
+  styleName: PropTypes.string,
+  text: PropTypes.string
+}
+
+export default Button

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import styles from './Note.scss'
 
-export default ({
+const Note = ({
   styleName='default',
   children,
   ...props
@@ -11,3 +11,12 @@ export default ({
     {children}
   </div>
 )
+
+Note.displayName = 'Note'
+
+Note.propTypes = {
+  styleName: PropTypes.string,
+  children: PropTypes.node
+}
+
+export default Note
