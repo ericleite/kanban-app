@@ -17,7 +17,8 @@ export default ({
         <Edit
           value={value}
           onEdit={onEdit}
-          {...props} />
+          {...props}
+        />
       </div>
     )
   }
@@ -36,7 +37,8 @@ class Edit extends React.Component {
         autoFocus={true}
         defaultValue={value}
         onBlur={this.finishEdit}
-        onKeyPress={this.checkEnter}/>
+        onKeyPress={this.checkEnter}
+      />
     )
   }
 

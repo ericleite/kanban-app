@@ -13,7 +13,7 @@ export default ({
   onEdit = () => {},
   onDelete = () => {}
 }) => {
-  const noResults = notes.length === 0;
+  const noResults = notes.length === 0
 
   return (
     <div className={styles[styleName]}>
