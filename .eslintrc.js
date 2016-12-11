@@ -48,7 +48,10 @@ module.exports = {
     'react/no-deprecated': 1,
     'react/no-did-mount-set-state': 1,
     'react/no-multi-comp': 1,
-    'react/prop-types': 1
+    'react/prop-types': 1,
+
+    // Import
+    'import/unambiguous': 0
   },
   'settings': {
     'import/resolver': 'webpack'

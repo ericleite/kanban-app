@@ -1,5 +1,6 @@
 import React from 'react'
 import uuid from 'uuid'
+import connect from '../../libs/connect'
 
 import Notes from '../Notes/Notes'
 import Button from '../Button/Button'
@@ -8,7 +9,7 @@ import Button from '../Button/Button'
 import style from './App.scss'
 /* eslint-enable */
 
-export default class App extends React.Component {
+class App extends React.Component {
   state = {
     notes: [
       {
@@ -27,6 +28,7 @@ export default class App extends React.Component {
 
     return (
       <div className="App">
+        {this.props.test}
         <Button
           text="+"
           styleName="sm"
@@ -95,3 +97,7 @@ export default class App extends React.Component {
     this.deleteNote(id)
   }
 }
+
+export default connect(() => ({
+  test: 'test'
+}))(App)
