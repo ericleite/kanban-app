@@ -1,14 +1,17 @@
 import React, { PropTypes } from 'react'
 
+// Components
 import Input from '../Input/Input'
 
+// CSS
 import styles from './Editable.scss'
 
 const Editable = ({
   editing,
-  value,
-  styleName='default',
+  onAddNote,
   onEdit,
+  styleName='default',
+  value,
   ...props
 }) => {
   if (editing) {
@@ -17,6 +20,7 @@ const Editable = ({
         <Edit
           value={value}
           onEdit={onEdit}
+          onAddNote={onAddNote}
           {...props}
         />
       </div>
@@ -31,9 +35,10 @@ Editable.displayName = 'Editable'
 
 Editable.propTypes = {
   editing: PropTypes.bool,
-  value: PropTypes.string,
+  onAddNote: PropTypes.func,
+  onEdit: PropTypes.func,
   styleName: PropTypes.string,
-  onEdit: PropTypes.func
+  value: PropTypes.string
 }
 
 export default Editable
@@ -43,6 +48,7 @@ class Edit extends React.Component {
 
   static propTypes = {
     value: PropTypes.string,
+    onAddNote: PropTypes.func,
     onEdit: PropTypes.func
   }
 
@@ -62,6 +68,7 @@ class Edit extends React.Component {
   checkEnter = (e) => {
     if (e.key === 'Enter') {
       this.finishEdit(e)
+      this.props.onAddNote()
     }
   }
 

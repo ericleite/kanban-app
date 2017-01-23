@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 
 export default (state, actions) => {
   if (typeof state === typeof Function ||
-     (typeof state === typeof Object  && Object.keys(state).length)) {
+     (typeof state === typeof Object && Object.keys(state).length)) {
     return target => connect(state, actions, target)
   }
 
@@ -13,7 +13,7 @@ export default (state, actions) => {
   /* eslint-enable */
 }
 
-// Connect to Alt through context. This hasn't been optimized // at all. If Alt store changes, it will force render.
+// Connect to Alt through context. This hasn't been optimized at all. If Alt store changes, it will force render.
 //
 // See *AltContainer* and *connect-alt* for optimized solutions.
 function connect(state = () => {}, actions = {}, target) {

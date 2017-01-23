@@ -3,6 +3,7 @@ import NoteActions from '../actions/NoteActions'
 export default class NoteStore {
   constructor() {
     this.bindActions(NoteActions)
+
     this.notes = []
   }
 

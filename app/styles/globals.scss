@@ -20,34 +20,38 @@
   height: 100%;
 }
 
-:global(h1, h2, h3, h4, h5, h6) {
+:global h1,
+:global h2,
+:global h3,
+:global h4,
+:global h5,
+:global h6 {
   margin-top: 0;
-  margin-bottom: $ms1;
-  font-family: serif;
-  line-height: 1;
+  margin-bottom: 0;
+  font-family: $serif;
 }
 
-:global(h1, .h1) {
+:global h1, :global .h1 {
   font-size: $ms6;
 }
 
-:global(h2, .h2) {
+:global h2, :global .h2 {
   font-size: $ms5;
 }
 
-:global(h3, .h3) {
+:global h3, :global .h3 {
   font-size: $ms4;
 }
 
-:global(h4, .h4) {
+:global h4, :global .h4 {
   font-size: $ms3;
 }
 
-:global(h5, .h5) {
+:global h5, :global .h5 {
   font-size: $ms2;
 }
 
-:global(h6, .h6) {
+:global h6, :global .h6 {
   font-size: $ms1;
 }
 

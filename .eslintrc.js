@@ -47,7 +47,7 @@ module.exports = {
     'react/jsx-space-before-closing': [1, 'never'],
     'react/no-deprecated': 1,
     'react/no-did-mount-set-state': 1,
-    'react/no-multi-comp': 1,
+    'react/no-multi-comp': 0,
     'react/prop-types': 1,
 
     // Import

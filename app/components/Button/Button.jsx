@@ -3,13 +3,13 @@ import React, { PropTypes } from 'react'
 import styles from './Button.scss'
 
 const Button = ({
-  styleName='default',
+  styleNames=[ 'default' ],
   text,
   ...props
 }) => {
   return (
     <button
-      className={styles[styleName]}
+      className={ styleNames.reduce((names, name) => names.concat(styles[name]), []).join(' ') }
       {...props}
     >
       {text}
@@ -20,7 +20,7 @@ const Button = ({
 Button.displayName = 'Button'
 
 Button.propTypes = {
-  styleName: PropTypes.string,
+  styleNames: PropTypes.array,
   text: PropTypes.string
 }
 

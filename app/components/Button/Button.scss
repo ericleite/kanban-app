@@ -1,63 +1,92 @@
 @import "../../styles/variables";
 
+/* Default
+   ------*/
 .default {
   display: inline-block;
   vertical-align: top;
+  padding: $ms1;
+  color: $viking;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: $ms1;
+  text-decoration: none;
+  transition: $transition-all-fast;
+}
+
+.default:hover {
+  color: $viking;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+}
+
+.default:focus, .default:active {
+  color: $viking;
+  background-color: transparent;
+  border: none;
+  text-decoration: none;
+  outline: none;
+}
+
+.default + .default {
+  margin-left: $ms1;
+}
+
+/* Faded
+   ------*/
+.faded {
+  composes: default;
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-style: italic;
+  opacity: 0.6;
+}
+.faded:hover {
+  opacity: 1;
+}
+
+/* Outlined
+   ------*/
+.outlined {
+  composes: default;
   padding: $ms1 $ms2;
   color: $viking;
   background-color: transparent;
   border-color: $viking;
   border-style: solid;
-  border-width: 0.0625em;
+  border-width: $border-width-sm;
   border-radius: 0.25em;
-  cursor: pointer;
-  font-size: $ms1;
-  text-decoration: none;
-  transition: all 200ms ease;
 }
-
-/* States
-   ------*/
-.default:hover {
+.outlined:hover {
   color: #fff;
   background-color: $viking;
   border-color: $viking;
   border-style: solid;
-  border-width: 0.0625em;
-  text-decoration: none;
+  border-width: $border-width-sm;
 }
-
-.default:focus, .default:active {
+.outlined:focus, .outlined:active {
   color: #fff;
   background-color: $viking;
   border-color: $viking;
   border-style: solid;
-  border-width: 0.0625em;
-  text-decoration: none;
+  border-width: $border-width-sm;
   box-shadow: inset 0 0 0.6em rgba(0,0,0,0.1);
-  outline: none;
 }
-
-/* Layout
-   ------*/
-.default + .default {
-  margin-left: $ms1;
-}
-
-/* Sizes
-   -----*/
-.sm {
-  composes: default;
+.outlined-sm {
+  composes: outlined;
   padding: $ms1/2 $ms1;
   font-size: 0.667em;
 }
 
-.md {
-  composes: default;
+.outlined-md {
+  composes: outlined;
   font-size: $ms1;
 }
 
-.lg {
-  composes: default;
+.outlined-lg {
+  composes: outlined;
   font-size: $ms3/2;
 }
