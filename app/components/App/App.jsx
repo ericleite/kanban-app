@@ -2,6 +2,8 @@ import React from 'react'
 import uuid from 'uuid'
 import connect from '../../libs/connect'
 
+import NoteActions from '../../actions/NoteActions'
+
 import Notes from '../Notes/Notes'
 import Button from '../Button/Button'
 
@@ -10,25 +12,11 @@ import style from './App.scss'
 /* eslint-enable */
 
 class App extends React.Component {
-  state = {
-    notes: [
-      {
-        id: uuid.v4(),
-        task: 'Build a kanban app'
-      },
-      {
-        id: uuid.v4(),
-        task: 'Do laundry'
-      }
-    ]
-  }
-
   render() {
-    const { notes } = this.state
+    const { notes } = this.props
 
     return (
       <div className="App">
-        {this.props.test}
         <Button
           text="+"
           styleName="sm"
@@ -45,49 +33,32 @@ class App extends React.Component {
   }
 
   addNote = () => {
-    this.setState({
-      notes: this.state.notes.concat([
-        {
-          id: uuid.v4(),
-          task: 'Another task'
-        }
-      ])
+    this.props.NoteActions.create({
+      id: uuid.v4(),
+      task: 'New Task'
     })
   }
 
   activateNodeEdit = (id) => {
-    this.setState({
-      notes: this.state.notes.map((note) => {
-        if (note.id === id) {
-          note.editing = true
-        }
-
-        return note
-      })
+    this.props.NoteActions.update({
+      id,
+      editing: true
     })
   }
 
   deleteNote(id) {
-    this.setState({
-      notes: this.state.notes.filter((note) => note.id !== id)
-    })
+    this.props.NoteActions.delete(id)
   }
 
   editNote = (id, task) => {
-    this.setState({
-      notes: this.state.notes.map((note) => {
-        if (note.id === id) {
-          note.editing = false
-          note.task = task
-        }
-
-        return note
-      })
+    this.props.NoteActions.update({
+      id,
+      task,
+      editing: false
     })
 
     if (task.length === 0) {
       this.deleteNote(id)
-      return
     }
   }
 
@@ -98,6 +69,8 @@ class App extends React.Component {
   }
 }
 
-export default connect(() => ({
-  test: 'test'
-}))(App)
+export default connect(({ notes }) => ({
+  notes
+}), {
+  NoteActions
+})(App)
