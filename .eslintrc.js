@@ -4,6 +4,9 @@ module.exports = {
     'node': true,
     'mocha': true
   },
+  globals: {
+    __webpack_public_path__: true
+  },
   'extends': [
     'eslint:recommended',
     'plugin:import/recommended',

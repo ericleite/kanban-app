@@ -7,6 +7,9 @@ import App from './components/App/App'
 import styles from './styles/main.scss'
 /* eslint-enable */
 
+// Set webpack publicPath dynamically.
+__webpack_public_path__ = process.env.NODE_ENV === 'production' ? 'kanban-app' : ''
+
 ReactDOM.render(
   <Provider>
     <App/>
