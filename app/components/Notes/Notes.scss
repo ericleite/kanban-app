@@ -1,15 +1,16 @@
 @import "../../styles/variables";
 
 .default {
-  padding: $ms2;
+  padding: 0 $ms2;
   background-color: $white;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
 }
 
 .inactive {
+  padding: $ms1 $ms2;
   color: $light-gray;
-  text-align: center;
   cursor: default;
+  text-align: center;
   user-select: none;
 }
 

@@ -35,4 +35,6 @@ $border-width-sm: 0.0625em;
 
 // Transitions
 // -----------
-$transition-all-fast: all 200ms ease;
+$transition-duration-fast: 200ms;
+$transition-default-easing: ease;
+$transition-all-fast: all $transition-duration-fast $transition-default-easing;

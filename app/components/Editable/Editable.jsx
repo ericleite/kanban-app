@@ -7,37 +7,40 @@ import Input from '../Input/Input'
 import styles from './Editable.scss'
 
 const Editable = ({
+  defaultStyleName='default',
+  editingStyleName='seamless',
   editing,
   onAdd,
   onEdit,
-  styleName='default',
   value,
   ...props
 }) => {
   if (editing) {
     return (
-      <div className={styles[styleName]}>
+      <div className={styles[defaultStyleName]}>
         <Edit
           value={value}
           onEdit={onEdit}
           onAdd={onAdd}
+          editingStyleName={editingStyleName}
           {...props}
         />
       </div>
     )
   }
 
-  return <span className={styles[styleName]} {...props}>{value}</span>
+  return <span className={styles[defaultStyleName]} {...props}>{value}</span>
 }
 
 
 Editable.displayName = 'Editable'
 
 Editable.propTypes = {
+  defaultStyleName: PropTypes.string,
+  editingStyleName: PropTypes.string,
   editing: PropTypes.bool,
   onAdd: PropTypes.func,
   onEdit: PropTypes.func,
-  styleName: PropTypes.string,
   value: PropTypes.string
 }
 
@@ -47,15 +50,16 @@ class Edit extends React.Component {
   static displayName = 'Edit'
 
   static propTypes = {
-    value: PropTypes.string,
+    editingStyleName: PropTypes.string,
     onAdd: PropTypes.func,
-    onEdit: PropTypes.func
+    onEdit: PropTypes.func,
+    value: PropTypes.string
   }
 
   render() {
     return (
       <Input
-        styleName="seamless"
+        styleName={this.props.editingStyleName}
         type="text"
         autoFocus={true}
         defaultValue={this.props.value}

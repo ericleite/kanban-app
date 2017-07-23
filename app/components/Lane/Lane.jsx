@@ -100,6 +100,7 @@ const Lane = ({
             <h4 onClick={onClickLaneHeader.bind(null, lane.id)}>
               <Editable
                 editing={lane.editing}
+                editingStyleName="seamless--header"
                 value={lane.title || 'Enter a title...'}
                 onEdit={onEditLane.bind(null, lane.id)}
                 onAdd={onAddLane}

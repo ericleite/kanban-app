@@ -3,4 +3,7 @@
 .default {
   flex-grow: 1;
   margin-right: $ms1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

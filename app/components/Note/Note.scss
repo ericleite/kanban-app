@@ -1,14 +1,30 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .default {
   position: relative;
   width: 100%;
   display: flex;
   align-items: center;
+  padding-top: $ms1;
+  padding-bottom: $ms1;
+
+  button {
+    visibility: hidden;
+  }
+
+  &:hover {
+    button {
+      visibility: visible;
+    }
+  }
 }
 
-.default + .default {
-  margin-top: $ms1;
-  padding-top: $ms1;
+.default + .default:before {
+  content: " ";
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 100%;
   border-top: 1px solid $white-smoke;
 }

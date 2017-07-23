@@ -22,3 +22,9 @@
   border: none;
   padding: 0;
 }
+
+.seamless--header {
+  composes: seamless;
+  font-family: $serif;
+  font-weight: 300;
+}

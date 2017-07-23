@@ -12,7 +12,9 @@
   cursor: pointer;
   font-size: $ms1;
   text-decoration: none;
-  transition: $transition-all-fast;
+  transition-property: background-color, border-color, color, opacity;
+  transition-duration: $transition-duration-fast;
+  transition-timing-function: $transition-default-easing;
 }
 
 .default:hover {
