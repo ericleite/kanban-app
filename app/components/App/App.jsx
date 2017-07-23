@@ -17,8 +17,9 @@ const App = ({ lanes, LaneActions }) => {
   const onAddLane = () => {
     LaneActions.create({
       id: uuid.v4(),
-      name: 'New Lane',
-      color: 'viking'
+      title: '',
+      color: 'viking',
+      editing: true
     })
   }
 

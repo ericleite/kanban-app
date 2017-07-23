@@ -12,8 +12,8 @@ const Notes = ({
   styleName='default',
   onAddNote = () => {},
   onDelete = () => {},
-  onEdit = () => {},
-  onNoteClick = () => {},
+  onEditNote = () => {},
+  onClickNote = () => {},
   onEmptyDoubleClick = () => {}
 }) => {
   const noResults = notes.length === 0
@@ -23,13 +23,13 @@ const Notes = ({
       {!noResults ? notes.map(({ id, editing, task }) =>
         <Note
           key={id}
-          onClick={onNoteClick.bind(null, id)}
+          onClick={onClickNote.bind(null, id)}
         >
           <Editable
             editing={editing}
             value={task}
-            onEdit={onEdit.bind(null, id)}
-            onAddNote={onAddNote}
+            onEdit={onEditNote.bind(null, id)}
+            onAdd={onAddNote}
           />
           <Button
             text="x"
@@ -49,9 +49,9 @@ Notes.propTypes = {
   notes: PropTypes.array,
   onAddNote: PropTypes.func,
   onDelete: PropTypes.func,
-  onEdit: PropTypes.func,
+  onEditNote: PropTypes.func,
   onEmptyDoubleClick: PropTypes.func,
-  onNoteClick: PropTypes.func,
+  onClickNote: PropTypes.func,
   styleName: PropTypes.string
 }
 

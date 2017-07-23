@@ -9,6 +9,7 @@ import LaneActions from '../../actions/LaneActions'
 
 // Components
 import Button from '../Button/Button'
+import Editable from '../Editable/Editable'
 import Notes from '../Notes/Notes'
 
 // CSS
@@ -23,6 +24,14 @@ const Lane = ({
   styleName='default',
   ...props
 }) => {
+  const deleteNote = noteId => {
+    LaneActions.detachFromLane({
+      laneId: lane.id,
+      noteId
+    })
+    NoteActions.delete(noteId)
+  }
+
   const onAddNote = () => {
     const noteId = uuid.v4()
 
@@ -37,31 +46,18 @@ const Lane = ({
     })
   }
 
-  const onNoteClick = id => {
-    NoteActions.update({
+  const onClickLaneHeader = id => {
+    LaneActions.update({
       id,
       editing: true
     })
   }
 
-  const deleteNote = noteId => {
-    LaneActions.detachFromLane({
-      laneId: lane.id,
-      noteId
-    })
-    NoteActions.delete(noteId)
-  }
-
-  const onEditNote = (id, task) => {
+  const onClickNote = id => {
     NoteActions.update({
       id,
-      task,
-      editing: false
+      editing: true
     })
-
-    if (task.length === 0) {
-      deleteNote(id)
-    }
   }
 
   const onDeleteNote = (id, e) => {
@@ -76,13 +72,38 @@ const Lane = ({
     LaneActions.delete(id)
   }
 
+  const onEditLane = (id, title) => {
+    LaneActions.update({
+      id,
+      title,
+      editing: false
+    })
+  }
+
+  const onEditNote = (id, task) => {
+    NoteActions.update({
+      id,
+      task,
+      editing: false
+    })
+
+    if (task.length === 0) {
+      deleteNote(id)
+    }
+  }
+
   return (
     <div className={styles[styleName]} {...props}>
       {lane !== undefined ?
         <div>
           <div className={styles['header']}>
-            <h4>
-              {lane.name}
+            <h4 onClick={onClickLaneHeader.bind(null, lane.id)}>
+              <Editable
+                editing={lane.editing}
+                value={lane.title || 'Enter a title...'}
+                onEdit={onEditLane.bind(null, lane.id)}
+                onAdd={onAddLane}
+              />
               <Button
                 text="x"
                 styleNames={[ 'action--deleteLane' ]}
@@ -94,10 +115,10 @@ const Lane = ({
             notes={selectNotesByIds(notes, lane.notes)}
             accentColor={lane.color}
             onAddNote={onAddNote}
+            onClickNote={onClickNote}
             onDelete={onDeleteNote}
-            onEdit={onEditNote}
+            onEditNote={onEditNote}
             onEmptyDoubleClick={onAddNote}
-            onNoteClick={onNoteClick}
           />
           <Button
             text="Add note..."

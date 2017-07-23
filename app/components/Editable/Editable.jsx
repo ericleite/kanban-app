@@ -8,7 +8,7 @@ import styles from './Editable.scss'
 
 const Editable = ({
   editing,
-  onAddNote,
+  onAdd,
   onEdit,
   styleName='default',
   value,
@@ -20,7 +20,7 @@ const Editable = ({
         <Edit
           value={value}
           onEdit={onEdit}
-          onAddNote={onAddNote}
+          onAdd={onAdd}
           {...props}
         />
       </div>
@@ -35,7 +35,7 @@ Editable.displayName = 'Editable'
 
 Editable.propTypes = {
   editing: PropTypes.bool,
-  onAddNote: PropTypes.func,
+  onAdd: PropTypes.func,
   onEdit: PropTypes.func,
   styleName: PropTypes.string,
   value: PropTypes.string
@@ -48,7 +48,7 @@ class Edit extends React.Component {
 
   static propTypes = {
     value: PropTypes.string,
-    onAddNote: PropTypes.func,
+    onAdd: PropTypes.func,
     onEdit: PropTypes.func
   }
 
@@ -68,7 +68,7 @@ class Edit extends React.Component {
   checkEnter = (e) => {
     if (e.key === 'Enter') {
       this.finishEdit(e)
-      this.props.onAddNote()
+      this.props.onAdd()
     }
   }
 
