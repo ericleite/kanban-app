@@ -90,3 +90,8 @@
   composes: outlined;
   font-size: $ms3/2;
 }
+
+.action--deleteLane {
+  composes: outlined-sm;
+  font-size: 12px;
+}

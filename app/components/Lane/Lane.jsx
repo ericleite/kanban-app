@@ -70,12 +70,25 @@ const Lane = ({
     deleteNote(id)
   }
 
+  const onDeleteLane = (id, e) => {
+    e.stopPropagation()
+
+    LaneActions.delete(id)
+  }
+
   return (
     <div className={styles[styleName]} {...props}>
       {lane !== undefined ?
         <div>
           <div className={styles['header']}>
-            <h4>{lane.name}</h4>
+            <h4>
+              {lane.name}
+              <Button
+                text="x"
+                styleNames={[ 'action--deleteLane' ]}
+                onClick={onDeleteLane.bind(null, lane.id)}
+              />
+            </h4>
           </div>
           <Notes
             notes={selectNotesByIds(notes, lane.notes)}
