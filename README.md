@@ -15,3 +15,23 @@
 * `npm run test:tdd` - Runs `tests/` in a TDD mode (watches for changes and rebuilds).
 * `npm run test:lint` - Runs code through ESLint to spot code quality issues.
 * `npm run stats` - Generates Webpack build statistics. See the [Analyzing Build Statistics](http://survivejs.com/webpack/building-with-webpack/analyzing-build-statistics/) chapter.
+
+## Tech Overview
+
+This project was built using:
+
+### JavaScript
+
+React + Alt
+
+### CSS
+
+SCSS + CSS Modules
+
+### Build
+
+Webpack + Babel + ESLint
+
+### Test
+
+Karma + Mocha
